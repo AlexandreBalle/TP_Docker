@@ -1,0 +1,21 @@
+version: '3.6'
+services:
+  phpapache:
+    build: 'mon_image'
+    ports:
+      - '30000:80'
+#--------------------------------------------------------
+  myadmin:
+     image: 'phpmyadmin/phpmyadmin'
+     ports :
+      - "50000:80"
+     environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=password
+#--------------------------------------------------------
+  database:
+    image: 'mariadb:10.4'
+    ports:
+     - "3306:3306"  
+    environment:
+       - MYSQL_ROOT_PASSWORD=password
